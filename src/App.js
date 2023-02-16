@@ -6,6 +6,8 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import Menu from './Menu';
+
 
 function App() {
   // 자료 잠깐 저장할 때 는 변수 사용 (let, var, const)
@@ -71,6 +73,7 @@ function App() {
         arrayCopy.sort();
         content(arrayCopy);
       }}>가나다순 정렬</button>
+      <Menu/>
     </div>
   );
 }
