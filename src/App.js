@@ -6,8 +6,14 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import Menu from './Menu';
-
+import Menu from './pages/Menu';
+import React from "react";
+import {Routes, Route, Link} from "react-router-dom";
+import About from './pages/About'
+import Counter from './pages/Couter';
+import Input from './pages/Input';
+import Input2 from './pages/Input2';
+import List from './pages/List';
 
 function App() {
   // 자료 잠깐 저장할 때 는 변수 사용 (let, var, const)
@@ -46,6 +52,25 @@ function App() {
 
   return (
     <div className="App">
+      <nav>
+        <Link to="/">HOME</Link> | <Link to="/about">ABOUT</Link> | <Link to="/counter">Counter </Link>  
+        | <Link to="/input">Input</Link> | <Link to="/input2">Input2</Link> | <Link to="/list">List</Link>
+        {/* <a href="">HOME</a> */}
+      </nav>
+      {/*
+      react router DOM install : npm install react-router-dom
+      Routes: Route의 묶음
+      브라우저가 바뀔 때 마다 어떤 Component를 Mapping해서 보여줄건지 정의 
+      */}
+      <Routes>
+        <Route path='/' element={<Menu/>}></Route>
+        {/* About이라는 리액트 컴포넌트 호출 */}
+        <Route path='/about' element={<About/>}></Route>
+        <Route path='/counter' element={<Counter/>}></Route>
+        <Route path='/input' element={<Input/>}></Route>
+        <Route path='/input2' element={<Input2/>}></Route>
+        <Route path='/list' element={<List/>}></Route>
+      </Routes>
       <div id={id}>
         <h4 className='black-nav' style={{color: 'red', fontSize : '22px'}}>{logo}</h4>
       </div>
@@ -73,7 +98,6 @@ function App() {
         arrayCopy.sort();
         content(arrayCopy);
       }}>가나다순 정렬</button>
-      <Menu/>
     </div>
   );
 }
