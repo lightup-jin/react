@@ -33,7 +33,7 @@ function App() {
   let [title, content] = useState(['아이스 아메리카노', '카페라떼', '생딸기 라떼', '초코라떼']);
   // 사이트 로고처럼 잘 바뀌지 않는 값은 굳이 state를 사용할 필요 없음. (변수 또는 하드코딩)
   let [logo, setLogo] = useState('React Blog');
-  let [like, plus] = useState(0);
+  let [like, plus] = useState([0,0,0,0,0]);;
   let [bread] = useState('소금빵');
 
   // Javascript Destructuring 문법 (오른쪽 왼쪽 형태 맞춤으로 값 할당)
@@ -106,6 +106,7 @@ function App() {
         <Route path='/' element={<Menu/>}></Route>
         {/* About이라는 리액트 컴포넌트 호출 */}
         <Route path='/about' element={<About/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
         <Route path='/counter' element={<Counter/>}></Route>
         <Route path='/input' element={<Input/>}></Route>
         <Route path='/input2' element={<Input2/>}></Route>
@@ -115,10 +116,11 @@ function App() {
         <h4 className='black-nav' style={{color: 'red', fontSize : '22px'}}>{logo}</h4>
       </div>
       <div className="list">
-        <h4>{title[0]} <span onClick={()=>{plus(like + 1)}}>👍</span> {like}</h4>
+        <h4>{title[0]}</h4>
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
       <div className="list">
+        
         <h4>{title[1]} <span onClick={()=>{
           let copy = [...title];
           copy[1] = '소금빵!'
@@ -162,7 +164,12 @@ function App() {
           return (
             <div className="list">
               {/* <h4>{a}</h4> */}
-              <h4>{title[i]}</h4>
+              <h4>{title[i]} 
+              <span onClick={()=>{
+                let copy = [...like];
+                copy[i] = copy[i] + 1;
+                plus(copy);
+              }}>👍</span> {like[i]}</h4>
               <p>02월 17일 발행</p>
             </div>
           )
